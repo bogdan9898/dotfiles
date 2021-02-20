@@ -1,7 +1,7 @@
 # XONSH WEBCONFIG START
 $PROMPT = '{env_name}{INTENSE_CYAN}{user}@{hostname}{BOLD_INTENSE_GREEN} {cwd}{branch_color}{curr_branch: {}}{RESET} {INTENSE_PURPLE}{prompt_end}{RESET} '
 $BASE16_SHELL = $HOME + "/.config/base16-shell/"
-xontrib load abbrevs argcomplete bashisms hist_navigator jedi output_search pipeliner readable-traceback vox whole_word_jumping base16_shell 
+xontrib load abbrevs jedi readable-traceback vox whole_word_jumping base16_shell 
 # XONSH WEBCONFIG END
 
 from xonsh.tools import register_custom_style

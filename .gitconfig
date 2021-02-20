@@ -3,3 +3,5 @@
 	name = Istoc Bogdan
 [init]
 	defaultBranch = master
+[pull]
+	rebase = false
