@@ -1,64 +1,9 @@
 # XONSH WEBCONFIG START
 $PROMPT = '{env_name}{INTENSE_CYAN}{user}@{hostname}{BOLD_INTENSE_GREEN} {cwd}{branch_color}{curr_branch: {}}{RESET} {INTENSE_PURPLE}{prompt_end}{RESET} '
 $BASE16_SHELL = $HOME + "/.config/base16-shell/"
-xontrib load abbrevs jedi readable-traceback vox whole_word_jumping base16_shell 
+xontrib load abbrevs jedi readable-traceback vox base16_shell
 # XONSH WEBCONFIG END
 
-from xonsh.tools import register_custom_style
-custom_style_1 = {
-	# 'Token': '#00ff00',
-	# "Token.Literal.String.Single": "#ff88aa",
-	# 'Token.Name.Property': '#a3e337',
-	# 'Token.Name.Variable': '#a3e337',
-	# 'Token.Name.Entity': '#a3e337',
-	# 'Token.Text': '#a3e337',
-	# 'Token.Generic': '#a3e337',
-	# 'Token.Name.Label': '#a3e337',
-	# 'Token.Name.Builtin': '#a3e337',
-	# 'Token.Name.Variable.Class': '#a3e337',
-	# 'Token.Name.Variable.Magic': '#a3e337',
-	# 'Token.Name.Variable.Instance': '#a3e337',
-	# 'Token.Name.Builtin.Pseudo': '#a3e337',
-	# 'Token.PTK.Scrollbar.Button': '#a3e337',
-	# 'oken.PTK.Scrollbar.Arrow': '#a3e337',
-	# 'Token.Other': '#08e0e0',
-	# 'Token.Name': '#ff00ff', #'#a3e337',
-	'Token.PTK.CompletionMenu.Completion': '#d0c6da',
-	# 'Token.PTK.CompletionMenu': '#2b2b2b',
-	'Token.Literal.Number': '#cdb5e6',
-	'Token.Literal.String': '#ffb11a',
-	'Token.Name.Function': '#08e0e0',
-	'Token.Name.Property': '#08e0e0',
-	'Token.Name.Entity': '#08e0e0',
-	'Token.Other': '#08e0e0',
-	'Token.Generic.Emph': '#08e0e0',
-	'Token.Name.Variable': '#a3e337',
-	'Token.Name.Label': '#a3e337',
-	'Token.Name.Builtin': '#a3e337',
-	'Token.Name.Builtin.Pseudo': '#a3e337',
-	'Token.Name.Variable.Class': '#a3e337',
-	'Token.Name.Variable.Magic': '#a3e337',
-	'Token.Name.Variable.Global': '#a3e337',
-	'Token.Name.Variable.Instance': '#a3e337',
-	'Token.Name.Namespace': '#a3e337',
-
-}
-register_custom_style("custom-style-1", custom_style_1, base='monokai')
-# $XONSH_COLOR_STYLE = 'custom-style-1'
-
-custom_style_2 = {
-	'GREEN': "#a9dc76"
-}
-register_custom_style("custom-style-2", custom_style_1, base='monokai')
-# $XONSH_COLOR_STYLE = "custom-style-2"
-
-#a3e337
-#ffb11a
-#08e0e0
-#ffa077
-#d0c6da
-
-########################################
 
 $XONSH_COLOR_STYLE = "monokai"
 
@@ -67,3 +12,8 @@ $VC_GIT_INCLUDE_UNTRACKED=True
 from xonsh.prompt.vc import git_dirty_working_directory
 $PROMPT_FIELDS['branch_color'] = lambda: ('{BOLD_INTENSE_RED}' if git_dirty_working_directory() else '{INTENSE_CYAN}')
 
+
+
+aliases["sas"] = 'source-bash --overwrite-aliases eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa_1'
+aliases["sak"] = 'source-bash --overwrite-aliases eval "$(ssh-agent -k)"'
+aliases["sal"] = 'ssh-add -l'
