@@ -1,7 +1,7 @@
 # XONSH WEBCONFIG START
 $PROMPT = '{env_name}{INTENSE_CYAN}{user}@{hostname}{BOLD_INTENSE_GREEN} {cwd}{branch_color}{curr_branch: {}}{RESET} {INTENSE_PURPLE}{prompt_end}{RESET} '
 $BASE16_SHELL = $HOME + "/.config/base16-shell/"
-xontrib load abbrevs jedi readable-traceback vox base16_shell
+xontrib load abbrevs jedi readable-traceback vox base16_shell bashisms
 # XONSH WEBCONFIG END
 
 
@@ -14,6 +14,8 @@ $PROMPT_FIELDS['branch_color'] = lambda: ('{BOLD_INTENSE_RED}' if git_dirty_work
 
 
 
-aliases["sas"] = 'source-bash --overwrite-aliases eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa_1'
-aliases["sak"] = 'source-bash --overwrite-aliases eval "$(ssh-agent -k)"'
+aliases["sas"] = 'source-bash --suppress-skip-message eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa_1'
+aliases["sak"] = 'source-bash --suppress-skip-message eval "$(ssh-agent -k)"'
 aliases["sal"] = 'ssh-add -l'
+aliases["svelte-new"] = "npx degit sveltejs/template"
+aliases["adog"]= "git log --all --decorate --oneline --graph"
