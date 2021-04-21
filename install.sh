@@ -1,5 +1,13 @@
-read -p "WARNING! This is gonna override the original dotfiles. Are you sure you want to continue? (y/n) " continue
-#echo $continue
+RED=$'\033[0;31m'
+RESET=$'\033[0m' # No Color
+
+read -p "${RED}+---------------------------------WARNING----------------------------------+
+|                                                                          |
+|${RESET}        This operation is going to override the original dotfiles.        ${RED}|
+|${RESET}               Are you sure you want to continue? [y/n]                   ${RED}|
+|                                                                          |
++--------------------------------------------------------------------------+${RESET}
+" continue
 
 if [ "$continue" == "y" ]; then
 	ln -svf "$(pwd)/.xonshrc" ~/.xonshrc
