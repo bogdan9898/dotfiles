@@ -2,6 +2,7 @@ read -p "WARNING! This is gonna override the original dotfiles. Are you sure you
 #echo $continue
 
 if [ "$continue" == "y" ]; then
-	ln -svf ~/dotfiles/.xonshrc ~/.xonshrc
-	ln -svf ~/dotfiles/.gitconfig ~/.gitconfig
+	ln -svf "$(pwd)/.xonshrc" ~/.xonshrc
+	ln -svf "$(pwd)/.gitconfig" ~/.gitconfig
+	mkdir -p ~/.ssh && ln -svf "$(pwd)/.ssh/config" ~/.ssh/config
 fi
