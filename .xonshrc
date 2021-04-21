@@ -1,9 +1,10 @@
 # XONSH WEBCONFIG START
 $PROMPT = '{env_name}{INTENSE_CYAN}{user}@{hostname}{BOLD_INTENSE_GREEN} {cwd}{branch_color}{curr_branch: {}}{RESET} {INTENSE_PURPLE}{prompt_end}{RESET} '
 $BASE16_SHELL = $HOME + "/.config/base16-shell/"
-xontrib load abbrevs jedi readable-traceback vox base16_shell bashisms
+xontrib load readable-traceback vox base16_shell bashisms
 # XONSH WEBCONFIG END
-
+# xontrib load jedi
+# xontrib load abbrevs
 
 $XONSH_COLOR_STYLE = "monokai"
 
@@ -18,4 +19,6 @@ aliases["sas"] = 'source-bash --suppress-skip-message eval "$(ssh-agent -s)" && 
 aliases["sak"] = 'source-bash --suppress-skip-message eval "$(ssh-agent -k)"'
 aliases["sal"] = 'ssh-add -l'
 aliases["svelte-new"] = "npx degit sveltejs/template"
-aliases["adog"]= "git log --all --decorate --oneline --graph"
+aliases["adog"] = "git log --all --decorate --oneline --graph"
+aliases["fuzzy-pacman"]  = "pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
+#aliases["fuzzy-yay"]  = "yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro  yay -S"
