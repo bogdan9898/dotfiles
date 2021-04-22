@@ -1,24 +1,56 @@
-# XONSH WEBCONFIG START
+# shell prompt
 $PROMPT = '{env_name}{INTENSE_CYAN}{user}@{hostname}{BOLD_INTENSE_GREEN} {cwd}{branch_color}{curr_branch: {}}{RESET} {INTENSE_PURPLE}{prompt_end}{RESET} '
-$BASE16_SHELL = $HOME + "/.config/base16-shell/"
-xontrib load readable-traceback vox base16_shell bashisms
-# XONSH WEBCONFIG END
-# xontrib load jedi
-# xontrib load abbrevs
-
-$XONSH_COLOR_STYLE = "monokai"
-
-
 $VC_GIT_INCLUDE_UNTRACKED=True
 from xonsh.prompt.vc import git_dirty_working_directory
 $PROMPT_FIELDS['branch_color'] = lambda: ('{BOLD_INTENSE_RED}' if git_dirty_working_directory() else '{INTENSE_CYAN}')
 
+#====================================================================================#
 
+# xontrib
+xontrib load readable-traceback vox base16_shell whole_word_jumping prompt_ret_code
 
-aliases["sas"] = 'source-bash --suppress-skip-message eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa_1'
-aliases["sak"] = 'source-bash --suppress-skip-message eval "$(ssh-agent -k)"'
-aliases["sal"] = 'ssh-add -l'
-aliases["svelte-new"] = "npx degit sveltejs/template"
+#====================================================================================#
+
+# env vars
+$BASE16_SHELL = $HOME + "/.config/base16-shell/"
+$XONSH_COLOR_STYLE = "monokai"
+$XONTRIB_LOC = "/usr/lib/python3.9/site-packages/xontrib"
+
+#====================================================================================#
+
+# themes
+# from xonsh.tools import register_custom_style
+# mystyle = {
+#     "Literal.String.Single": "#ff88aa",
+#     "Literal.String.Double": "#ff4488",
+#     "RED": "INTENSE_RED",
+# }
+# register_custom_style("better-monokai", mystyle, base="monokai")
+# $XONSH_COLOR_STYLE = "better-monokai"
+
+#====================================================================================#
+
+# aliases
+#aliases["sas"] = 'source-bash --suppress-skip-message eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa_1'
+#aliases["sak"] = 'source-bash --suppress-skip-message eval "$(ssh-agent -k)"'
+#aliases["sal"] = 'ssh-add -l'
+#aliases["svelte-new"] = "npx degit sveltejs/template"
 aliases["adog"] = "git log --all --decorate --oneline --graph"
 aliases["fuzzy-pacman"]  = "pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 aliases["fuzzy-yay"]  = "yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print $2}\")' | xargs -ro  yay -S"
+aliases["update-grub"] = "sudo grub-mkconfig -o /boot/grub/grub.cfg"
+aliases["clipin"] = "xclip -selection clipboard -i -rmlastnl"
+aliases["clipout"] = "xclip -selection clipboard -o && echo"
+
+#====================================================================================#
+
+# others
+'''
+> xontrib load bashisms # issue: cd doesnt print errors
+> xontrib load jedi # issue: too much python intellisense; path autocomplition stops working
+> xpip install prompt_toolkit # needed for prompt_ret_code to work
+> todo: add suport for bash bangs
+'''
+
+#====================================================================================#
+
