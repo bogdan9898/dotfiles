@@ -7,7 +7,7 @@ $PROMPT_FIELDS['branch_color'] = lambda: ('{BOLD_INTENSE_RED}' if git_dirty_work
 #====================================================================================#
 
 # xontrib
-xontrib load readable-traceback vox base16_shell whole_word_jumping prompt_ret_code
+xontrib load readable-traceback vox base16_shell whole_word_jumping prompt_ret_code bashisms # bash_bang
 
 #====================================================================================#
 
@@ -15,6 +15,11 @@ xontrib load readable-traceback vox base16_shell whole_word_jumping prompt_ret_c
 $BASE16_SHELL = $HOME + "/.config/base16-shell/"
 $XONSH_COLOR_STYLE = "monokai"
 $XONTRIB_LOC = "/usr/lib/python3.9/site-packages/xontrib"
+$PATH.append("~/.local/bin")
+
+# dev
+$XONSH_READABLE_TRACEBACK=False
+$XONSH_SHOW_TRACEBACK=True
 
 #====================================================================================#
 
@@ -30,17 +35,20 @@ $XONTRIB_LOC = "/usr/lib/python3.9/site-packages/xontrib"
 
 #====================================================================================#
 
+def _calc_hash(args, alg):
+	echo -n @(args) | @(alg)sum | cut -d " " -f1 # cannot pipe this into another commands NEED FIXING
+
 # aliases
-#aliases["sas"] = 'source-bash --suppress-skip-message eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa_1'
-#aliases["sak"] = 'source-bash --suppress-skip-message eval "$(ssh-agent -k)"'
-#aliases["sal"] = 'ssh-add -l'
-#aliases["svelte-new"] = "npx degit sveltejs/template"
 aliases["adog"] = "git log --all --decorate --oneline --graph"
-aliases["fuzzy-pacman"]  = "pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
-aliases["fuzzy-yay"]  = "yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print $2}\")' | xargs -ro  yay -S"
+aliases["fuzzy-pacman"]  = "pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -Sy"
+aliases["fuzzy-yay"]  = "yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print $2}\")' | xargs -ro  yay -Sy"
 aliases["update-grub"] = "sudo grub-mkconfig -o /boot/grub/grub.cfg"
 aliases["clipin"] = "xclip -selection clipboard -i -rmlastnl"
 aliases["clipout"] = "xclip -selection clipboard -o && echo"
+aliases["gs"] = "git status"
+aliases["calc-sha256"] = lambda args, stdin=None:  _calc_hash(args, "sha256")
+aliases["calc-md5"] = lambda args, stdin=None:  _calc_hash(args, "md5")
+aliases["lla"] = "ls -lha"
 
 #====================================================================================#
 
