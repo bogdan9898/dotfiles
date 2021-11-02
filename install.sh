@@ -10,7 +10,9 @@ read -p "${RED}+---------------------------------WARNING------------------------
 " continue
 
 if [ "$continue" == "y" ]; then
+	ln -svf "$(pwd)/.bashrc" ~/.bashrc
 	ln -svf "$(pwd)/.xonshrc" ~/.xonshrc
+	ln -svf "$(pwd)/.zshrc" ~/.zshrc
 	ln -svf "$(pwd)/.gitconfig" ~/.gitconfig
 	mkdir -p ~/.ssh && ln -svf "$(pwd)/.ssh/config" ~/.ssh/config
 fi
