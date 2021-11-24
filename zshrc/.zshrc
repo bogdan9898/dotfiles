@@ -92,6 +92,11 @@ source /usr/share/zsh/plugins/zsh-autoswitch-virtualenv/autoswitch_virtualenv.pl
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh             # this file must be the las one loaded
 
 
+# append to PATH
+path+=~/.local/bin
+export PATH         # export PATH=$PATH:~/.local/bin
+
+
 ## Alias section
 alias cp="cp -i"                                                 # Confirm before overwriting something
 alias df='df -h'                                                 # Human-readable sizes

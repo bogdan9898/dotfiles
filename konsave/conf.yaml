@@ -63,6 +63,7 @@ save:
             - lightlyrc
             - ksplashrc
             - khotkeysrc
+            - yakuakerc
 
     app_layouts:
         location: "$HOME/.local/share/kxmlgui5"
@@ -96,6 +97,7 @@ export:
             - aurorae
             - icons
             - wallpapers
+            - yakuake
 
     home_folder:
         location: "$HOME/"
