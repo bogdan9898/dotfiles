@@ -88,7 +88,7 @@ export LESS=-r
 
 
 # plugins
-source /usr/share/zsh/plugins/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh # mkvenv <venv_name>    /    rmvenv 
+source /usr/share/zsh/plugins/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh # mkvenv   /   rmvenv 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh             # this file must be the las one loaded
 
 
