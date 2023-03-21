@@ -88,7 +88,7 @@ export LESS=-r
 
 
 # plugins
-source /usr/share/zsh/plugins/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh
+source /usr/share/zsh/plugins/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh # mkvenv <venv_name>    /    rmvenv 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh             # this file must be the las one loaded
 
 
@@ -102,6 +102,7 @@ alias cp="cp -i"                                                 # Confirm befor
 alias df='df -h'                                                 # Human-readable sizes
 alias free='free -m'                                             # Show sizes in MB
 alias ls="ls --color=always"                                     # maybe someday i'll customize the colors
+alias ll="ls -lha"
 alias fuzzy-pacman="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -Sy"
 alias fuzzy-yay="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print $2}\")' | xargs -ro  yay -Sy"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
@@ -114,7 +115,9 @@ alias adog="git log --all --decorate --oneline --graph"
 # alias calc-md5='echo -n @(args) | md5sum | cut -d " " -f1'
 alias lla="ls -lha"
 alias htop="htop -t"
-alias ydl="youtube-dl -x --audio-format mp3"
-
-
-
+# alias ydl="youtube-dl -x --audio-format mp3" # not working anymore
+alias ydl="yt-dlp -x --audio-format mp3"
+alias ydlbestmp4="yt-dlp -f best"
+alias dice="python dice_local_network.py"
+alias fixkeyring="sudo pacman -S archlinux-keyring"
+alias pacmanrm="sudo pacman -Runs" # $ pacmanrm package_name
